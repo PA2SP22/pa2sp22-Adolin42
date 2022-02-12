@@ -1,6 +1,6 @@
 /*
  * Name        : lab_3.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Using branching statements, looping statements and string and
  *               character functions complete the functions
  */
@@ -65,6 +65,27 @@ int main() {
  */
 string Goldilocks(string item, int number) {
   // CODE HERE
+  if (item == "porridge" && number == 1) {
+  return "This porridge is too hot";
+  } else if (item == "porridge" && number == 2) {
+      return "This porridge is too cold";
+  } else if (item == "porridge" && number == 3) {
+      return "This porridge is just right";
+  } else if (item == "chair" && number == 1) {
+      return "This chair is too big";
+  } else if (item == "chair" && number == 2) {
+      return "This chair is too small";
+  } else if (item == "chair" && number == 3) {
+      return "This chair is just right";
+  } else if (item == "bed" && number == 1) {
+      return "This bed is too hard";
+  } else if (item == "bed" && number == 2) {
+      return "This bed is too soft";
+  } else if (item == "bed" && number == 3) {
+      return "This bed is just right";
+  } else {
+      return "This bed is just right";
+  }
 }
 
 /*
@@ -82,7 +103,47 @@ string Goldilocks(string item, int number) {
 int RockScissorPaper(char player_one, char player_two) {
   // YOU MUST USE A SWITCH IN THIS FUNCTION
   // CODE HERE
-}
+
+  switch (player_one) {
+    case 'R':
+    case 'r':
+
+      if (player_two == 'R' || player_two == 'r') {
+        return 3;
+      } else if (player_two == 'S' || player_two == 's') {
+        return 1;
+      } else {
+        return 2;
+      }
+      break;
+
+
+    case 'S':
+    case 's':
+
+      if (player_two == 'R' || player_two == 'r') {
+        return 2;
+      } else if (player_two == 'S' || player_two == 's') {
+        return 3;
+      } else {
+        return 1;
+      }
+      break;
+
+
+    case 'P':
+    case 'p':
+
+      if (player_two == 'R' || player_two == 'r') {
+        return 1;
+      } else if (player_two == 'S' || player_two == 's') {
+        return 2;
+      } else {
+        return 3;
+      }
+      break;
+    }
+  }
 
 /*
  * Return a string that contains a character (taken from the parameter
@@ -95,8 +156,11 @@ int RockScissorPaper(char player_one, char player_two) {
  */
 string CharWithAsciiValueAsString(char character) {
   // CODE HERE
-
   // HINT: try a stringstream here
+
+  stringstream sout;
+  sout << character << " " << static_cast<int>(character);
+  return sout.str();
 }
 
 /*
@@ -106,6 +170,13 @@ string CharWithAsciiValueAsString(char character) {
  */
 string ToLower(string input) {
   // CODE HERE
+
+  for (int i = input.length() - 1; i > -1; i--) {
+    char char_to_change = input.at(i);
+    char_to_change = tolower(char_to_change);
+    input.at(i) = char_to_change;
+  }
+return input;
 }
 
 /*
@@ -115,8 +186,14 @@ string ToLower(string input) {
  */
 string ToUpper(string input) {
   // CODE HERE
-}
 
+  for (int i = input.length() - 1; i > -1; i--) {
+    char char_to_change = input.at(i);
+    char_to_change = toupper(char_to_change);
+    input.at(i) = char_to_change;
+  }
+  return input;
+}
 /*
  * Return the character from the input string at index char_index.
  * @param string input - The string from which the character will be taken
@@ -128,6 +205,12 @@ string ToUpper(string input) {
  */
 char GetCharacter(string input, int char_index) {
   // CODE HERE
+
+  if (char_index > input.length() - 1) {
+    return '\0';
+  } else {
+    return input.at(char_index);
+  }
 }
 
 // For testing (DO NOT ALTER)
