@@ -1,6 +1,6 @@
 /*
  * Name        : lab_4.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Use branching statements, looping statements and string and
  *               character functions to complete the functions
  */
@@ -66,6 +66,14 @@ int main() {
  */
 string MakeString(string label, double value, char separator) {
   // CODE HERE
+  
+  stringstream ss;
+  ss << label << " " << separator << " " << value;
+  return ss.str();
+  
+
+  
+  
 }
 
 /*
@@ -78,6 +86,12 @@ string MakeString(string label, double value, char separator) {
  */
 char StringToChar(string value) {
   // CODE HERE
+  
+   if (value.length() == 0 || value.length() > 1) {
+     return '\0';
+   } else {
+     return value.at(0);
+     }
 }
 
 /*
