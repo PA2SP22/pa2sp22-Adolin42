@@ -131,8 +131,7 @@ int RockScissorPaper(char player_one, char player_two) {
       break;
 
 
-    case 'P':
-    case 'p':
+    default:
 
       if (player_two == 'R' || player_two == 'r') {
         return 1;
@@ -206,7 +205,7 @@ string ToUpper(string input) {
 char GetCharacter(string input, int char_index) {
   // CODE HERE
 
-  if (char_index > input.length() - 1) {
+  if (static_cast<unsigned int>(char_index) > input.length() - 1) {
     return '\0';
   } else {
     return input.at(char_index);
