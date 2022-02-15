@@ -128,6 +128,18 @@ int StringToInt(string value) {
  */
 double StringToDouble(string value) {
   // CODE HERE
+  double dvalue = 0.0;
+  stringstream converter(value);
+  converter.exceptions(ios_base::failbit);
+
+  try {
+    converter >> dvalue;
+  } catch (ios_base::failure f) {
+  }
+
+  return dvalue;
+  
+  
 }
 
 /*
@@ -143,6 +155,12 @@ double StringToDouble(string value) {
  */
 bool StringToBool(string value) {
   // CODE HERE
+  
+  if (value[0] == 'T' || value[0] == 't') {
+    return true;
+  } else {
+    return false;
+  }
 }
 
 // For testing (DO NOT ALTER)
