@@ -66,14 +66,10 @@ int main() {
  */
 string MakeString(string label, double value, char separator) {
   // CODE HERE
-  
+
   stringstream ss;
   ss << label << " " << separator << " " << value;
   return ss.str();
-  
-
-  
-  
 }
 
 /*
@@ -86,12 +82,12 @@ string MakeString(string label, double value, char separator) {
  */
 char StringToChar(string value) {
   // CODE HERE
-  
-   if (value.length() == 0 || value.length() > 1) {
-     return '\0';
-   } else {
-     return value.at(0);
-     }
+
+  if (value.length() == 0 || value.length() > 1) {
+    return '\0';
+  } else {
+    return value.at(0);
+    }
 }
 
 /*
@@ -138,8 +134,6 @@ double StringToDouble(string value) {
   }
 
   return dvalue;
-  
-  
 }
 
 /*
@@ -155,7 +149,7 @@ double StringToDouble(string value) {
  */
 bool StringToBool(string value) {
   // CODE HERE
-  
+
   if (value[0] == 'T' || value[0] == 't') {
     return true;
   } else {
