@@ -1,6 +1,6 @@
 /*
  * Name        : lab_5.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Working with Arrays
  */
 
@@ -26,7 +26,14 @@ using std::stringstream;
  * @return string - A string containing the contents of values separated by the
  *                  specified separator character
  */
-string PrepareForDisplay(int values[], int size, char separator = ',');
+string PrepareForDisplay(int values[], int size, char separator = ',') {
+  stringstream ss;
+  for (int i = 0; i < size - 1; i++) {
+    ss << values[i] << separator;
+  }
+  ss << values[size - 1];
+  return ss.str();
+}
 
 /*
  * Test to see if an array contains a specified value.
@@ -35,7 +42,14 @@ string PrepareForDisplay(int values[], int size, char separator = ',');
  * @param int value - The value to search for within the array
  * @return bool - true if value is found in the array, otherwise false
  */
-bool HasValue(int values[], int size, int value);
+bool HasValue(int values[], int size, int value) {
+  for (int i = 0; i < size; i++) {
+    if (value == values[i]) {
+      return true;
+    }
+  }
+  return false;
+}
 
 /*
  * Return the value from an array at a specified index.
@@ -47,7 +61,14 @@ bool HasValue(int values[], int size, int value);
  * @return int - The value at the specified index in the array when error is set
  *               to false. if index is invalid, returns 0 and sets error to true
  */
-int ValueAt(int values[], int size, int index, bool& error);
+int ValueAt(int values[], int size, int index, bool& error) {
+  if (index < size) {
+    error = false;
+    return values[index];
+  }
+  error = true;
+  return 0;
+}
 
 /*
  * Return the sum of the values in an integer array.
@@ -55,7 +76,15 @@ int ValueAt(int values[], int size, int index, bool& error);
  * @param int size - The size of the integer array
  * @return int - The sum of the values in the array
  */
-int Sum(int values[], int size);
+int Sum(int values[], int size) {
+  int sum = 0;
+  int i = 0;
+
+  for (i = 0; i < size; i++) {
+    sum = values[i] + sum;
+  }
+  return sum;
+}
 
 /*
  * Swap the positions of two values in an integer array. The two
@@ -66,7 +95,19 @@ int Sum(int values[], int size);
  * @param int index2 - The position of the second value to be swapped
  * @return bool - true if the swap was successful, otherwise false
  */
-bool SwapValues(int values[], int size, int index1, int index2);
+bool SwapValues(int values[], int size, int index1, int index2) {
+  if (index1 > size - 1 || index1 < 0 || index2 > size - 1 || index2 < 0) {
+  return false;
+  } else {
+    int first_value = values[index1];
+    int second_value = values[index2];
+
+    values[index1] = second_value;
+    values[index2] = first_value;
+
+    return true;
+  }
+}
 
 // For testing (DO NOT ALTER)
 #include <cctype>
