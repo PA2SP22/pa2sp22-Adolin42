@@ -1,6 +1,6 @@
 /*
  * Name        : lab_7.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Working with File I/O
  */
 #include <fstream>
@@ -58,6 +58,37 @@ int main() {
 
 // CODE HERE -- FUNCTION DEFINITION
 
+bool ProcessFile(string filename) {
+  string line;
+
+  ifstream fin(filename);
+
+  if (fin.fail()) {
+    exit(1);
+  }
+
+  while (!fin.eof()) {
+    getline(fin, line);
+
+    if (!fin) {
+      break;
+    } else if (line == "10") {
+      OnTen();
+    } else if (line == "20") {
+      OnTwenty();
+    } else if (line == "30") {
+      OnThirty();
+    } else if (line == "40") {
+      OnForty();
+    } else if (line ==  "50") {
+      OnFifty();
+    } else {
+      OnError();
+    }
+  }
+  fin.close();
+  return true;
+}
 
 
 // For testing (DO NOT ALTER)
