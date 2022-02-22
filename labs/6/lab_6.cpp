@@ -143,7 +143,8 @@ int FindLarger(const int &int_1, const int &int_2) {
  * third parameter (int) should contain a count of the number of lowercase
  * characters in the first parameter (string)
  */
-int GetStats(const string &the_string, int &total_upper_char, int &total_lower_char) {
+int GetStats(const string &the_string,
+int &total_upper_char, int &total_lower_char) {
   total_upper_char = 0;
   total_lower_char = 0;
 
@@ -170,7 +171,8 @@ int GetStats(const string &the_string, int &total_upper_char, int &total_lower_c
  * with "Message: ". If first parameter is the empty string, return
  * "Message: empty".
  */
-string BuildMessage(const string &the_string="", const bool &boolean=false) {
+string BuildMessage(const string &the_string = "",
+const bool &boolean = false) {
   if (the_string.empty()) return "Message: empty";
 
   string copy = the_string;
