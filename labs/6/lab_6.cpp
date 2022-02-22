@@ -1,6 +1,6 @@
 /*
  * Name        : lab_6.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Practicing Functions
  */
 
@@ -34,6 +34,7 @@ void Hello();
  * Display message to stdout (no newline character after)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+void PrintMessage(const string &message);
 
 /*
  * function name: GetAnswer
@@ -44,6 +45,7 @@ void Hello();
  * Return the value 42
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int GetAnswer();
 
 /*
  * function name: FindLarger
@@ -55,6 +57,7 @@ void Hello();
  * if the values are equivalent.
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int FindLarger(const int &int_1, const int &int_2);
 
 /*
  * function name: GetStats
@@ -69,6 +72,7 @@ void Hello();
  * characters in the first parameter (string)
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+int GetStats(const string &the_string, int &num_of_upper_char);
 
 /*
  * function name: BuildMessage
@@ -83,6 +87,7 @@ void Hello();
  * "Message: empty".
  */
 // CODE HERE (FUNCTION PROTOTYPE)
+string BuildMessage(const string &the_string, const bool &boolean);
 
 
 // For testing (DO NOT ALTER)
@@ -104,10 +109,78 @@ int main() {
 }
 
 // CODE HERE (FUNCTION DEFINITIONS)
+
 void Hello() {
   cout << "Hello world!";
 }
 
+void PrintMessage(const string &message) {
+  cout << message;
+}
+
+int GetAnswer() {
+  return 42;
+}
+
+int FindLarger(const int &int_1, const int &int_2) {
+  if (int_1 > int_2) {
+    return int_1;
+  } else {
+    return int_2;
+  }
+  return 0;
+}
+
+/*
+ * function name: GetStats
+ * parameters: string (const call-by-reference), int (call-by-reference),
+ *             int (call-by-reference)
+ * default arguments: none
+ * return type: int
+ *
+ * Return the length of string. On return second parameter (int) should contain
+ * a count of the number of uppercase characters of first parameter (string),
+ * third parameter (int) should contain a count of the number of lowercase
+ * characters in the first parameter (string)
+ */
+int GetStats(const string &the_string, int &total_upper_char, int &total_lower_char) {
+  total_upper_char = 0;
+  total_lower_char = 0;
+
+  for (unsigned int i = 0; i < the_string.length(); i++) {
+    if (isupper(the_string[i])) {
+      total_upper_char += 1;
+    }
+    if (islower(the_string[i])) {
+      total_lower_char += 1;
+    }
+  }
+  return the_string.length();
+}
+
+/*
+ * function name: BuildMessage
+ * parameters: string (const call-by-reference), bool (const call-by-reference)
+ * default arguments: string = "" (empty string), bool = false
+ * return type: string
+ *
+ * Return the string "Message: STRING", where STRING is replaced by the value of
+ * the first parameter (string). If second parameter (bool) is true, convert
+ * first parameter (string) to all uppercase letters before concatenating it
+ * with "Message: ". If first parameter is the empty string, return
+ * "Message: empty".
+ */
+string BuildMessage(const string &the_string="", const bool &boolean=false) {
+  if (the_string.empty()) return "Message: empty";
+
+  string copy = the_string;
+  if (boolean == true) {
+    for (unsigned int i = 0; i < the_string.length(); i++) {
+    copy[i] = toupper(copy[i]);
+    }
+  }
+  return "Message: " + copy;
+}
 // For testing (DO NOT ALTER)
 void UnitTest() {
   cout << string(40, '-') << endl;
