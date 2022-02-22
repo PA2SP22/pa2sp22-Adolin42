@@ -22,7 +22,7 @@ using std::stringstream;
 
 // Declare Function Prototypes Here (What goes above main)
 
-bool CheckAlphabetic(const the_string &the_string);
+bool CheckAlphabetic(const string &the_string);
 
 bool EncryptString(string &the_string, int shift);
 
