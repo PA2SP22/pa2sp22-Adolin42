@@ -1,6 +1,6 @@
 /*
  * Name        : lab_9.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Working with Classes
  */
 #include <iostream>
@@ -106,6 +106,53 @@ int main() {
 }
 
 // CODE HERE -- CLASS DEFINITION
+  void Spaceship::set_name(string name) {
+    name_ = name;
+  }
+  void Spaceship::set_top_speed(double top_speed) {
+    top_speed_ = top_speed;
+  }
+  void Spaceship::set_fuel_source(string fuel_source) {
+    fuel_source_ = fuel_source;
+  }
+  void Spaceship::set_crew_capacity(int crew_capacity) {
+    crew_capacity_ = crew_capacity;
+  }
+  string Spaceship::name() const {
+    return name_;
+  }
+  double Spaceship::top_speed() const {
+    return top_speed_;
+  }
+  string Spaceship::fuel_source() const {
+    return fuel_source_;
+  }
+  int Spaceship::crew_capacity() const {
+    return crew_capacity_;
+  }
+
+  /*
+   * Get a string representation of this Spaceship's specifications.
+   * The string will be formatted as
+   * "NAME\n
+   *  Top Speed:     Warp TOP_SPEED\n
+   *  Fuel Source:   FUEL_SOURCE\n
+   *  Crew Capacity: CREW_CAPACITY"
+   * where NAME, TOP_SPEED (to two decimal places), FUEL_SOURCE, and
+   * CREW_CAPACITY contain the values of the associated member variables.
+   * @uses stringstream
+   * @return string - A representation of this Spaceship's specifications
+   */
+  string Spaceship::ToString() const {
+    stringstream sout;
+    sout.setf(std::ios::showpoint | std::ios::fixed);
+    sout.precision(2);
+    sout << name_ << endl;
+    sout << "Top Speed:     " << "Warp " << top_speed_ << endl;
+    sout << "Fuel Source:   " << fuel_source_ << endl;
+    sout << "Crew Capacity: " << crew_capacity_;
+    return sout.str();
+  }
 
 
 // For testing (DO NOT ALTER)
