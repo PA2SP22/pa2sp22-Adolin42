@@ -19,6 +19,7 @@ int main(int argc, char *argv[]) {
   string line;
   ifstream fin;
   // 1 CLA - echo
+  // Fucking with git
   if (argc == 1) {
     while (!cin.eof()) {
       getline(cin, line);
