@@ -1,6 +1,6 @@
 /*
  * Name        : temperature.h
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Class Header File
  */
 
@@ -8,8 +8,11 @@
 #include <sstream>
 using std::string;
 using std::stringstream;
+using std::endl;
 
 // ADD HEADER GUARD HERE
+#ifndef LINDEN_TEMPERATURE_H
+#define LINDEN_TEMPERATURE_H
 
 
 /*
@@ -114,3 +117,4 @@ class Temperature {
 };
 
 // REST OF HEADER GUARD GOES HERE
+#endif
