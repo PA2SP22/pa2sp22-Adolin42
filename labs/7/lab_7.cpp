@@ -64,7 +64,7 @@ bool ProcessFile(string filename) {
   ifstream fin(filename);
 
   if (fin.fail()) {
-    exit(1);
+    return false;
   }
 
   while (!fin.eof()) {
