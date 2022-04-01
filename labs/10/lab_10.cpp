@@ -2,6 +2,7 @@
  * Name        : lab_10.cpp
  * Author      : Luke Sathrum
  * Description : Unit_Test to test your class.
+ * testing
  */
 #include <iostream>
 #include "temperature.h"
