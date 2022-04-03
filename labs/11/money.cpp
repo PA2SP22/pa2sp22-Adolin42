@@ -57,14 +57,12 @@ const Money operator -(const Money &amount) {
   // Negate the cents_ and dollars_
   int neg_cents = -amount.cents_;
   int neg_dollars = -amount.dollars_;
-  
   return Money(neg_dollars, neg_cents);
 }
 
 ostream& operator <<(ostream &out, const Money &amount) {
   // "Default" scenario, where dollars_ and cents_ are both >= 0 AND cents_ > 9
   if (amount.dollars_ >= 0 && amount.cents_ >= 0 && amount.cents_ > 9) {
-    
     out << '$';
     out << amount.dollars_;
     out << '.';
