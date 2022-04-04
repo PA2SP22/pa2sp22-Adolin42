@@ -82,7 +82,8 @@ int BubbleSort(int the_array[], unsigned int size) {
   
   for (int i = size-1; i >= 1; i--) {
     passes++;
-      for (int j = 0; i >= i-1; i++) {
+      // Luke: I see this alot. This should be j++, not i++
+      for (int j = 0; j <= i-1; j++) {
         if (the_array[j] > the_array[j+1]) {
           SwapValues(the_array[j], the_array[j+1]);
         }
@@ -104,14 +105,16 @@ int OptimizedBubbleSort(int the_array[], unsigned int size) {
  for (int i = size-1; i >= 1; i--) {
    bool swapped = false;
    passes++;
-   for (int j = 0; j >= i-1; j++) {
+   // Luke: Should be <=
+   for (int j = 0; j <= i-1; j++) {
      if (the_array[j] > the_array[j+1]) {
        SwapValues(the_array[j], the_array[j+1]);
        swapped = true;  
      }
-    if (swapped == false) {
-      break;
-    }
+   }
+   // Luke: This should be outside the for loop
+   if (swapped == false) {
+     break;
    }
  }
  return passes;
