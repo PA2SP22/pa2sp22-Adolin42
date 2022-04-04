@@ -1,10 +1,12 @@
 /*
  * Name        : money.h
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Class Header File
  */
 
 // ADD HEADER GUARD HERE
+#ifndef JEFF_BEZOS_IS_EVIL
+#define JEFF_BEZOS_IS_EVIL
 
 #include <string>
 #include <iostream>
@@ -113,3 +115,4 @@ class Money {
 };
 
 // REST OF HEADER GUARD GOES HERE
+#endif
