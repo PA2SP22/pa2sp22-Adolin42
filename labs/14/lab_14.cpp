@@ -100,7 +100,21 @@ int BubbleSort(int the_array[], unsigned int size) {
  *               should increment your variable once you enter the outside loop.
  */
 int OptimizedBubbleSort(int the_array[], unsigned int size) {
- 
+ int passes = 0;
+ for (int i = size-1; i >= 1; i--) {
+   bool swapped = false;
+   passes++;
+   for (int j = 0; j >= i-1; j++) {
+     if (the_array[j] > the_array[j+1]) {
+       SwapValues(the_array[j], the_array[j+1]);
+       swapped = true;  
+     }
+    if (swapped == false) {
+      break;
+    }
+   }
+ }
+ return passes;
 }
 
 /*
