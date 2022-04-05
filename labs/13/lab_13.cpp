@@ -91,8 +91,8 @@ int main() {
  * @return string* - A pointer to the newly allocated string
  */
 string* MakeDynoString(string contents) {
-  string* string = new string[contents];
-  return string;
+  string* str = new string(contents);
+  return str;
 }
 
 /*
@@ -101,7 +101,8 @@ string* MakeDynoString(string contents) {
  *                               string
  */
 void ClearDynoString(string *&the_string) {
-  
+  delete the_string;
+  the_string = NULL;
 }
 
 /*
@@ -119,20 +120,21 @@ void ClearDynoString(string *&the_string) {
  */
 unsigned int CountChars(string* theString, unsigned int &alpha, 
 unsigned int &num) {
-  int length = 0;
+  alpha = 0;
+  num = 0;
+  
   if (theString == NULL) {
     throw "NULL STRING REFERENCE";
   }
-  for (int i = 0; i < theString->size(); i++) {
-    if (isalpha(theString[i])) {
+  for (int i = 0; i < theString->length(); i++) {
+    if (isalpha(theString->at(i))) {
       alpha++;
     }
-    if (isdigit(theString[i])) {
+    if (isdigit(theString->at(i))) {
       num++;
     }
-    length++;
   }
-  return length;
+  return theString->length();
 }
 
 /*
@@ -146,7 +148,12 @@ unsigned int &num) {
  * @throw The message "NULL STRING REFERENCE" if the_string is NULL
  */
 bool FindWord(string *the_string, string the_word) {
-  return true;
+  if (the_string == NULL) {
+    throw "NULL STRING REFERENCE";
+  } else if (the_string->find(the_word) != string::npos) {
+    return true;
+  }
+  return false;
 }
 
 /*
@@ -161,7 +168,13 @@ bool FindWord(string *the_string, string the_word) {
  * @throw The message "NULL STRING REFERENCE" if the_string is NULL
  */
 bool ReplaceWord(string* the_string, string old_word, string new_word) {
-  return true;
+  if (the_string == NULL) {
+    throw "NULL STRING REFERENCE";
+  } else {
+    if (the_string->find(old_word)) {
+      
+    }
+  }
 }
 
 
