@@ -79,7 +79,7 @@ int main() {
  */
 int BubbleSort(int the_array[], unsigned int size) {
   int passes = 0;
-  
+
   for (int i = size-1; i >= 1; i--) {
     passes++;
       // Luke: I see this alot. This should be j++, not i++
@@ -101,23 +101,23 @@ int BubbleSort(int the_array[], unsigned int size) {
  *               should increment your variable once you enter the outside loop.
  */
 int OptimizedBubbleSort(int the_array[], unsigned int size) {
- int passes = 0;
- for (int i = size-1; i >= 1; i--) {
-   bool swapped = false;
-   passes++;
-   // Luke: Should be <=
-   for (int j = 0; j <= i-1; j++) {
+  int passes = 0;
+  for (int i = size-1; i >= 1; i--) {
+    bool swapped = false;
+    passes++;
+    // Luke: Should be <=
+    for (int j = 0; j <= i-1; j++) {
      if (the_array[j] > the_array[j+1]) {
        SwapValues(the_array[j], the_array[j+1]);
-       swapped = true;  
+       swapped = true;
      }
-   }
-   // Luke: This should be outside the for loop
-   if (swapped == false) {
+    }
+    // Luke: This should be outside the for loop
+    if (swapped == false) {
      break;
-   }
- }
- return passes;
+    }
+  }
+  return passes;
 }
 
 /*
@@ -137,9 +137,9 @@ int SelectionSort(int the_array[], unsigned int size) {
       if (the_array[j] < the_array[index_of_smallest]) {
         index_of_smallest = j;
       }
-      if (index_of_smallest != i) {
+    }
+    if (index_of_smallest != i) {
         SwapValues(the_array[i], the_array[index_of_smallest]);
-      }
     }
   }
   return passes;
