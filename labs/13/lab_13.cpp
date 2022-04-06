@@ -118,15 +118,15 @@ void ClearDynoString(string *&the_string) {
  * @return unsigned int - Contains the length of the_string
  * @throw The message "NULL STRING REFERENCE" if the_string is NULL
  */
-unsigned int CountChars(string* theString, unsigned int &alpha, 
+unsigned int CountChars(string* theString, unsigned int &alpha,
 unsigned int &num) {
   alpha = 0;
   num = 0;
-  
+
   if (theString == NULL) {
     throw "NULL STRING REFERENCE";
   }
-  for (int i = 0; i < theString->length(); i++) {
+  for (unsigned int i = 0; i < theString->length(); i++) {
     if (isalpha(theString->at(i))) {
       alpha++;
     }
@@ -170,11 +170,13 @@ bool FindWord(string *the_string, string the_word) {
 bool ReplaceWord(string* the_string, string old_word, string new_word) {
   if (the_string == NULL) {
     throw "NULL STRING REFERENCE";
+  } else if (the_string->find(old_word) == string::npos) {
+    return false;
   } else {
-    if (the_string->find(old_word)) {
-      
+    int index = the_string->find(old_word);
+    the_string->replace(index, old_word.length(), new_word);
+    return true;
     }
-  }
 }
 
 
