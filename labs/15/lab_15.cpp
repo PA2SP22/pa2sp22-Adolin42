@@ -1,6 +1,6 @@
 /*
  * Name        : lab_15.cpp
- * Author      : FILL IN
+ * Author      : Ptolemy Linden
  * Description : Working with Insertion and Shell Sort
  */
 #include <iostream>
@@ -62,6 +62,77 @@ int main() {
 
 // CODE HERE -- FUNCTION DEFINITION
 
+/*
+ * Apply the insertion sort algorithm to sort an array of integers.
+ * @param int[] the_array - The integer array to be sorted
+ * @param unsigned int size - The size of the_array
+ * @return int - The number of passes the algorithm does. In this case "pass" is
+ *               defined as the number of times the outside loop runs. You
+ *               should increment your variable once you enter the outside loop
+ */
+int InsertionSort(int the_array[], unsigned int size) {
+  int passes = 0;
+
+  for (unsigned int i = 0; i <= size - 1; i++) {
+    int j = i;
+    passes++;
+
+    while (j > 0 && the_array[j] < the_array[j - 1]) {
+      SwapValues(the_array[j], the_array[j - 1]);
+      j = j - 1;
+    }
+  }
+  return passes;
+}
+
+/*
+ * Apply the shell sort algorithm to sort an array of integers.
+ * NOTE: At the end of each iteration of the for loop you will need to call
+ *       DisplayArray(the_array);
+ * @param int[] the_array - The integer array to be sorted
+ * @param unsigned int size - The size of the_array
+ * @return int - The number of passes the algorithm does. In this case "pass" is
+ *               defined as the number of times the outside loop runs. You
+ *               should increment your variable once you enter the outside loop.
+ 
+  gap = n / 2
+  while gap > 0
+    for i = gap to n - 1
+      temp = a[i]
+      j = i
+    while j >= gap and a[j - gap] > temp
+      a[j] = a[j - gap]
+      j = j - gap
+    a[j] = temp  
+  gap = gap / 2
+ */
+int ShellSort(int the_array[], unsigned int size) {
+  int passes = 0;
+  int gap = size / 2;
+
+  while (gap > 0) {
+    passes++;
+
+    for (unsigned int i = gap; i <= size - 1; i++) {
+      int temp = the_array[i];
+      int j = i;
+
+      while (j >= gap && the_array[j - gap] > temp) {
+        the_array[j] = the_array[j - gap];
+        j = j - gap;
+      }
+      the_array[j] = temp;
+    }
+    gap = gap / 2;
+  }
+  return passes;
+}
+
+/*
+ * Swap the values of two integer variables.
+ * @param int &value_1 - The first value to be swapped.
+ * @param int &value_2 - The second value to be swapped.
+ */
 
 void SwapValues(int &value_1, int &value_2) {
   // DO NOT ALTER THE NEXT 3 LINES!!!
@@ -69,6 +140,9 @@ void SwapValues(int &value_1, int &value_2) {
     cout << value_1 << " " << value_2 << endl;
   }
   // Code SWAP Algorithm Here
+  int swap = value_1;
+  value_1 = value_2;
+  value_2 = swap;
 }
 
 // For testing (DO NOT ALTER)
