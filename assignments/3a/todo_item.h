@@ -1,21 +1,28 @@
 #include <iostream>
 #include <string>
+#include <sstream>
+using std::stringstream;
 using std::string;
-using namespace std;
 
-class ToDoItem {
-  public:
-    // Constructor
-    ToDoItem(string description, int priority = 1, bool completed = false)
-    // Member Functions
-    
-    // Accessors/Getters
-    
-    
-    // Mutators/Setters
+class TodoItem {
+ public:
+  // Constructor
+  TodoItem(string description = "", int priority = 1, bool completed = false);
+  // Member Functions
+  string ToFile();
+  // Accessors/Getters
+  string description();
+  int priority();
+  bool completed();
 
-  private:
-    string description_;
-    int priority_;
-    bool completed_;
+  // Mutators/Setters
+  void set_description(string description);
+  void set_priority(int priority);
+  void set_completed(bool completed);
+
+ private:
+  string description_;
+  int priority_;
+  bool completed_;
+  string Scrub(string to_scrub);
 };
