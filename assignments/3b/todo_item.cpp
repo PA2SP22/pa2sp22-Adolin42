@@ -14,13 +14,11 @@ the description@3@1). Uses the scrub function to change @
 symbols that may be contained in description_.
   */
 string TodoItem::ToFile() {
-  string complete = "";
   stringstream ss;
 
   ss << Scrub(description_) << '@' << priority_ << '@' << completed_;
-  complete = ss.str();
-
-  return complete;
+  
+  return ss.str();
 }
 
 string TodoItem::description() {
