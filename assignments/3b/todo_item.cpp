@@ -17,7 +17,7 @@ string TodoItem::ToFile() {
   stringstream ss;
 
   ss << Scrub(description_) << '@' << priority_ << '@' << completed_;
-  
+
   return ss.str();
 }
 

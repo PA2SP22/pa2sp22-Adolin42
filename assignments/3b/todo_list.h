@@ -9,12 +9,11 @@ using std::string;
 
 class TodoList {
  private:
-
   // Private member variables
   TodoItem** list_;
   unsigned int size_;
   unsigned int capacity_;
-  
+
   // Private member functions
   void IncreaseCapacity();
   void Compact(unsigned int location);
@@ -33,9 +32,6 @@ class TodoList {
   void Sort();
   string ToFile();
   friend ostream& operator <<(ostream &out, const TodoList &tdl);
-  
-  
- 
 };
 
 #endif

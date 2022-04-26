@@ -9,20 +9,20 @@ using std::endl;
   */
   void TodoList::IncreaseCapacity() {
     capacity_ += 10;
-    
+
     TodoItem** temp_array = new TodoItem*[capacity_];
-    
+
     for (unsigned int i = 0; i < capacity_; i++) {
       temp_array[i] = NULL;
     }
-    
+
     for (unsigned int i = 0; i < size_; i++) {
       temp_array[i] = list_[i];
     }
     delete[] list_;
     list_ = temp_array;
   }
-  
+
   /*
     Compacts the array to get rid of an empty spot in the array. Should 
   be called by DeleteItem at the appropriate time.
@@ -45,25 +45,25 @@ using std::endl;
     size_ = 0;
     capacity_ = 25;
     list_  = new TodoItem*[capacity_];
-    
+
     for (unsigned int i = 0; i < capacity_; i++) {
       list_[i] = NULL;
     }
   }
-  
+
   /*
     DESTRUCTOR
   Frees the memory for all TodoItems 
   Frees the memory for the dynamic TodoItem* array 
   */
-  
+
   TodoList::~TodoList() {
     for (unsigned int i = 0; i < size_; i++) {
       delete list_[i];
     }
     delete[] list_;
   }
-  
+
   /*
   Has one parameter, a dynamic instance of 
   TodoItem (i.e. TodoItem*). If there is room in the array add the new 
@@ -79,7 +79,7 @@ using std::endl;
     }
     size_++;
   }
-  
+
   /*
     Has one parameter, an integer of the location 
   to delete. Please note the location is in human-readable form, i.e. 
@@ -96,7 +96,7 @@ using std::endl;
       Compact(location);
     }
   }
-  
+
   /*
     Named GetItem. Has one parameter, an integer of the location to 
   retrieve the TodoItem. Please note the location is in human-
@@ -111,7 +111,7 @@ using std::endl;
       TodoItem* item = list_[location - 1];
       return item;
   }
-  
+
   /*
     Returns an unsigned integer containing the 
   current size of the list (number of items present).
@@ -119,7 +119,7 @@ using std::endl;
   unsigned int TodoList::GetSize() {
     return size_;
   }
-  
+
   /*
     Returns an unsigned integer containing the 
   current maximum capacity of the list (number of slots). 
@@ -127,7 +127,7 @@ using std::endl;
   unsigned int TodoList::GetCapacity() {
     return capacity_;
   }
-  
+
   /*
     Sorts the array by the priorities of the items. (1 is 
   highest priority, 5 is lowest). 
@@ -143,7 +143,7 @@ using std::endl;
       }
     }
   }
-  
+
   /*
     Returns a string containing all TodoItems in the list. 
   Uses the TodoItems ToFile function to create. Each item should be 
@@ -157,7 +157,7 @@ using std::endl;
     }
     return ss.str();
   }
-  
+
   ostream& operator <<(ostream &out, const TodoList &tdl) {
     // out << c.cents_;
     // Return the ostream object to allow for chaining of <<
@@ -166,7 +166,7 @@ using std::endl;
       out << "Item #" << i + 1 << endl;
       out << "Description: " << tdl.list_[i]->description() << endl;
       out << "Priority: " << tdl.list_[i]->priority() << endl;
-      
+
       if (tdl.list_[i]->completed() == true) {
         out << "Completed: Yes" << endl;
       } else {
@@ -175,4 +175,3 @@ using std::endl;
     }
     return out;
   }
-  
