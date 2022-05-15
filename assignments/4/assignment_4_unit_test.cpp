@@ -95,7 +95,7 @@ void UnitTest() {
   Test(list.Exists(10) == false, "Exists(10)");
 
   list.RemoveFirst(0);
-  Test(sserr.str() == no_value, "RemoveFirst(0)");
+  /*15*/Test(sserr.str() == no_value, "RemoveFirst(0)");
   sserr.str("");
   list.RemoveAll(0);
   Test(sserr.str() == no_value, "RemoveAll(0)");
@@ -106,35 +106,35 @@ void UnitTest() {
   sserr.str("");
 
   list.PopBack();
-  Test(list.GetSize() == 0 && sserr.str() == empty, "PopBack() & GetSize()");
+  /*18*/Test(list.GetSize() == 0 && sserr.str() == empty, "PopBack() & GetSize()");
   sserr.str("");
 
   list.PushFront(1);
-  Test(list.GetSize() == 1, "PushFront(1) & GetSize()");
+  /*19*/Test(list.GetSize() == 1, "PushFront(1) & GetSize()");
   Test(list.ToStringForwards() == "1", "ToStringForwards()");
   Test(list.ToStringBackwards() == "1", "ToStringBackwards()");
-  Test(list.Exists(1) == true, "Exists(1)");
+  /*22*/Test(list.Exists(1) == true, "Exists(1)");
 
   list.PopFront();
-  Test(list.GetSize() == 0, "PopFront() & GetSize()");
+  /*23*/Test(list.GetSize() == 0, "PopFront() & GetSize()");
   Test(list.ToStringForwards() == "", "ToStringForwards()");
   Test(list.ToStringBackwards() == "", "ToStringBackwards()");
 
   list.PushBack(5);
   Test(list.GetSize() == 1, "PushBack(5) & GetSize()");
-  Test(list.ToStringForwards() == "5", "ToStringForwards()");
-  Test(list.ToStringBackwards() == "5", "ToStringBackwards()");
+  /*27*/Test(list.ToStringForwards() == "5", "ToStringForwards()");
+  /*28*/Test(list.ToStringBackwards() == "5", "ToStringBackwards()");
 
   list.PopBack();
-  Test(list.GetSize() == 0, "PopBack() & GetSize()");
+  /*29*/Test(list.GetSize() == 0, "PopBack() & GetSize()");
   Test(list.ToStringForwards() == "", "ToStringForwards()");
   Test(list.ToStringBackwards() == "", "ToStringBackwards()");
 
   list.PushFront(10);
   list.PushFront(20);
   Test(list.GetSize() == 2, "PushFront(10), PushFront(20) & GetSize()");
-  Test(list.ToStringForwards() == "20, 10", "ToStringForwards()");
-  Test(list.ToStringBackwards() == "10, 20", "ToStringBackwards()");
+  /*33*/Test(list.ToStringForwards() == "20, 10", "ToStringForwards()");
+  /*34*/Test(list.ToStringBackwards() == "10, 20", "ToStringBackwards()");
   Test(list.Exists(10) == true, "Exists(10)");
   Test(list.Exists(1) == false, "Exists(1)");
 
@@ -145,7 +145,7 @@ void UnitTest() {
 
   list.PushFront(20);
   list.PopBack();
-  Test(list.GetSize() == 1, "PushFront(20), PopBack() & GetSize()");
+  /*40*/Test(list.GetSize() == 1, "PushFront(20), PopBack() & GetSize()");
   Test(list.ToStringForwards() == "20", "ToStringForwards()");
   Test(list.ToStringBackwards() == "20", "ToStringBackwards()");
 
@@ -163,7 +163,7 @@ void UnitTest() {
   list.PushFront(5);
   list.PushBack(20);
   list.PushBack(25);
-  Test(list.GetSize() == 4,
+  /*49*/Test(list.GetSize() == 4,
        "PushFront(10), PushFront(5), PushBack(20), PushBack(25) & GetSize()");
   Test(list.ToStringForwards() == "5, 10, 20, 25", "ToStringForwards()");
   Test(list.ToStringBackwards() == "25, 20, 10, 5", "ToStringBackwards()");
