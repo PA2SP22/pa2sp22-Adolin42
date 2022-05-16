@@ -27,7 +27,7 @@ class DLList {
   // Output List
   string ToStringForwards();
   string ToStringBackwards();
- 
+
  private:
   unsigned int size_;
   DLNode* head_;

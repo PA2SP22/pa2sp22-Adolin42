@@ -106,7 +106,7 @@ void UnitTest() {
   sserr.str("");
 
   list.PopBack();
-  /*18*/Test(list.GetSize() == 0 && sserr.str() == empty, "PopBack() & GetSize()");
+  Test(list.GetSize() == 0 && sserr.str() == empty, "PopBack() & GetSize()");
   sserr.str("");
 
   list.PushFront(1);
@@ -198,12 +198,12 @@ void UnitTest() {
        "PushFront(20, 30, 40 ,50), PushBack(60, 70, 80, 10");
   Test(list.ToStringForwards() == "50, 40, 30, 20, 60, 70, 80, 10",
        "ToStringForwards()");
-  Test(list.ToStringBackwards() == "10, 80, 70, 60, 20, 30, 40, 50",
+  /*64*/Test(list.ToStringBackwards() == "10, 80, 70, 60, 20, 30, 40, 50",
        "ToStringBackwards()");
 
   sserr.str("");
   list.RemoveFirst(1);
-  Test(sserr.str() == no_value, "RemoveFirst(1)");
+  /*65*/Test(sserr.str() == no_value, "RemoveFirst(1)");
   sserr.str("");
   list.RemoveFirst(50);
   Test(sserr.str() == "", "RemoveFirst(50)");

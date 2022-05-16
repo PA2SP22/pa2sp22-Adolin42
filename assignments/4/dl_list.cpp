@@ -160,7 +160,7 @@ void DLList::PopFront() {
     delete head_;
     head_ = NULL;
     tail_ = NULL;
-    size_--;
+    size_ = 0;
     return;
   }
 
@@ -215,14 +215,13 @@ void DLList::RemoveFirst(int find) {
 
   // Check if list is 1 node long
   if (size_ == 1) {
-    // Check if the node's contents matches find
+    // Check if "find" is present
     if (head_->GetContents() == find) {
       delete head_;
       head_ = NULL;
       tail_ = NULL;
       size_ = 0;
       return;
-    // The node's contents != find  
     } else {
       cerr << "Not Found";
       return;
@@ -232,18 +231,43 @@ void DLList::RemoveFirst(int find) {
   // If the above are false, then the list must be 2+ nodes long
   DLNode* iterator = head_;
 
-  // Iterate through the list until iterator points to NULL
-  // or we find "find".
+  // Loop through the list until iterator reaches NULL
   while (iterator != NULL) {
-    if (iterator->GetContents() == find) {
+    // Check if iterator == head_
+    if (iterator->GetContents() == find && iterator == head_) {
+      DLNode* temp = head_;
+      head_ = head_->GetNext();
+      head_->SetPrevious(NULL);
+      delete temp;
+      size_--;
+      return;
+    // Check if iterator is pointing to tail_
+    } else if (iterator->GetContents() == find && iterator == tail_) {
+      DLNode* temp = tail_;
+      tail_ = tail_->GetPrevious();
+      tail_->SetNext(NULL);
+      delete temp;
+      size_--;
+      return;
+    // Check if iterator is pointing to a "middle" node
+    } else if (iterator->GetContents() == find && iterator != head_
+               && iterator != tail_) {
       DLNode* temp = iterator->GetPrevious();
       temp->SetNext(iterator->GetNext());
+      temp = iterator->GetNext();
+      temp->SetPrevious(iterator->GetPrevious());
       delete iterator;
+      size_--;
       return;
+    // If all of the above are false, then iterator is not pointing to
+    // a node containing "find", therefore we iterate to the next node
+    } else {
+      iterator = iterator->GetNext();
     }
-    // Iterator has reached null, therefore "find" was not found
-    cerr << "Not Found";
   }
+  // If iterator has reached NULL, then that means "find" was not found within
+  // the list, therefore we print "Not Found" to the standard error output
+  cerr << "Not Found";
 }
 
 /*
@@ -274,24 +298,48 @@ void DLList::RemoveAll(int find) {
 
   // If the above are false, then the list must be 2+ nodes long
   DLNode* iterator = head_;
-  // Using this variable to check if any nodes were found.
+  // Using this variable to check if any nodes were deleted.
   // If size_check == size_ after we loop through the list,
   // then that means no nodes were found and we cerr << "Not Found".
   unsigned int size_check = size_;
 
+  // Looping through the list until iterator == NULL
   while (iterator != NULL) {
-    if (iterator->GetContents() == find) {
+    // Checking if iterator == head_
+    if (iterator->GetContents() == find && iterator == head_) {
+      DLNode* temp = head_;
+      head_ = head_->GetNext();
+      head_->SetPrevious(NULL);
+      delete temp;
+      iterator = head_;
+      size_--;
+
+    // Checking if iterator == tail_
+    } else if (iterator->GetContents() == find && iterator == tail_) {
+      DLNode* temp = tail_->GetPrevious();
+      temp->SetNext(NULL);
+      delete tail_;
+      tail_ = temp;
+      iterator = tail_;
+      size_--;
+    // Checking if iterator is pointing to a "middle" node
+    } else if (iterator->GetContents() == find && iterator != head_
+               && iterator != tail_) {
       DLNode* temp = iterator->GetPrevious();
       temp->SetNext(iterator->GetNext());
       temp = iterator->GetNext();
       temp->SetPrevious(iterator->GetPrevious());
       delete iterator;
+      iterator = temp;
       size_--;
+    // If none of the above cases are true, then iterator's node's contents !=
+    // find, therefore we iterate to the next node
     } else {
       iterator = iterator->GetNext();
     }
   }
-  // Iterator has reached NULL
+
+  // Checking if any nodes were deleted
   if (size_check == size_) {
     cerr << "Not Found";
   }
